@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE>
 <html>
 <head>
   <meta charset="utf-8">
@@ -17,6 +17,8 @@
   <!-- iCheck -->
   <link rel="stylesheet" href="/res/admin/plugins/iCheck/square/blue.css">
 
+
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -33,13 +35,13 @@
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
-    <form action="../../index2.html" method="post">
+    <form action="/admin/login" method="post">
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <input type="text" class="form-control" placeholder="Login" name="login">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" class="form-control" placeholder="Password" name="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -75,13 +77,14 @@
 </div>
 <!-- /.login-box -->
 
-<!-- jQuery 2.2.3 -->
-<script src="/res/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
+
+ <!-- jQuery 2.2.3 -->
+<script href="/res/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="/res/admin/bootstrap/js/bootstrap.min.js"></script>
+<script href="/res/admin/bootstrap/js/bootstrap.min.js"></script>
 <!-- iCheck -->
-<script src="/res/admin/plugins/iCheck/icheck.min.js"></script>
-<script>
+<script href="/res/admin/plugins/iCheck/icheck.min.js"></script>
+<script>  
   $(function () {
     $('input').iCheck({
       checkboxClass: 'icheckbox_square-blue',
