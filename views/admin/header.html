@@ -272,10 +272,16 @@ desired effect
                 <ul class="sidebar-menu">
                     <li class="header">HEADER</li>
                     <!-- Optionally, you can add icons to the links -->
-                    <li class="active">
+                    <li class="">
                         <a href="/admin/users">
                             <i class="fa fa-user"></i>
                             <span>Usuários</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/categories">
+                            <i class="fa fa-link"></i>
+                            <span>Categorias</span>
                         </a>
                     </li>
                     <li>

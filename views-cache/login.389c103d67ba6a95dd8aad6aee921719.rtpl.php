@@ -79,7 +79,7 @@
 
 
  <!-- jQuery 2.2.3 -->
-<script href="/res/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script href="/res/admin/plugins/jQuery/jquery.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script href="/res/admin/bootstrap/js/bootstrap.min.js"></script>
 <!-- iCheck -->
