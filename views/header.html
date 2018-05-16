@@ -154,8 +154,11 @@
                             <a href="#">Produtos</a>
                         </li>
                         <li>
-                            <a href="#">Carrinho</a>
+                            <a href="#">Categorias</a>
                         </li>
+                        <li>
+                            <a href="#">Carrinho</a>
+                        </li>                        
                     </ul>
                 </div>
             </div>
