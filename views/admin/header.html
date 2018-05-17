@@ -285,11 +285,11 @@ desired effect
                         </a>
                     </li>
                     <li>
-                        <a href="/res/admin/#">
+                        <a href="/admin/products">
                             <i class="fa fa-link"></i>
-                            <span>Another Link</span>
+                            <span>Produtos</span>
                         </a>
-                    </li>
+                    </li>                  
                     <li class="treeview">
                         <a href="/res/admin/#">
                             <i class="fa fa-link"></i>
