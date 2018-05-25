@@ -51,7 +51,7 @@
                                     <i class="fa fa-heart"></i> Lista de Desejos</a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="/cart">
                                     <i class="fa fa-shopping-cart"></i> Meu Carrinho</a>
                             </li>
                             <li>
@@ -122,7 +122,7 @@
 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="carrinho.html">Carrinho -
+                        <a href="/cart">Carrinho -
                             <span class="cart-amunt">R$100</span>
                             <i class="fa fa-shopping-cart"></i>
                             <span class="product-count">5</span>
@@ -148,16 +148,16 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="#">Home</a>
+                            <a href="/">Home</a>
                         </li>
                         <li>
-                            <a href="#">Produtos</a>
+                            <a href="/products">Produtos</a>
                         </li>
                         <li>
-                            <a href="#">Categorias</a>
+                            <a href="/categories">Categorias</a>
                         </li>
                         <li>
-                            <a href="#">Carrinho</a>
+                            <a href="/cart">Carrinho</a>
                         </li>                        
                     </ul>
                 </div>
