@@ -64,8 +64,8 @@ class User extends Model {
         $sql = new Sql();
 
         $results = $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b ON a.idperson = b.idperson WHERE a.deslogin = :LOGIN", array(
-            ":LOGIN"=>$login
-        ));
+            ":LOGIN" => $login
+        )); 
 
         if (count($results) === 0){
 
@@ -87,7 +87,6 @@ class User extends Model {
             $_SESSION[User::SESSION] = $user->getValues();
 
             return $user;
-
 
         } else {
 
@@ -162,17 +161,18 @@ class User extends Model {
 
         $sql = new Sql();
 
-        $result = $sql->select("CALL sp_usersupdate_save(:iduser, :desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin)", array(
+        $results = $sql->select("CALL sp_usersupdate_save(:iduser, :desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin)", array(
+
             ":iduser" => $this->getiduser(),
             ":desperson" => utf8_decode($this->getdesperson()),
             ":deslogin" => $this->getdeslogin(),
-            ":despassword" => User::getPasswordHash ($this->getdespassword()),
+            ":despassword" => $this->getdespassword(),
             ":desemail" => $this->getdesemail(),
             ":nrphone" => $this->getnrphone(),
             ":inadmin" => $this->getinadmin()
         ));
 
-        $this->setData($result[0]);
+        $this->setData($results[0]);
 
     }
 
@@ -324,7 +324,7 @@ class User extends Model {
 
     public static function getPasswordHash($password){
 
-        return password_hash($password,    PASSWORD_DEFAULT, ['cost'=> 12 ]);
+        return password_hash($password, PASSWORD_DEFAULT, ['cost'=> 12 ]);
 
     }
 
