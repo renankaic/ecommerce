@@ -7,7 +7,7 @@ use \Hcode\Model;
 
 class Address extends Model {
 
-
+    
 
 }
 
