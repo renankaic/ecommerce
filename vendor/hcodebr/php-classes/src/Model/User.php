@@ -11,8 +11,9 @@ class User extends Model {
 
     const SESSION = "User";
     const SECRET = "HcodePhp7_Secret";
-    const ERROR = "";
-    const ERROR_REGISTER = "";
+    const ERROR = "UserError";
+    const ERROR_REGISTER = "UserErrorRegister";
+    const SUCCESS = "UserSuccess";
 
     public static function getFromSession(){
 
@@ -129,15 +130,15 @@ class User extends Model {
         $sql = new Sql();
 
         $result = $sql->select("CALL sp_users_save(:desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin)", array(
-            ":desperson"=> utf8_decode($this->getdesperson()),
+            ":desperson"=> $this->getdesperson(),
             ":deslogin"=> $this->getdeslogin(),
             ":despassword"=> User::getPasswordHash ($this->getdespassword()),
-            ":desemail"=> $this->getdesemail(),
-            ":nrphone"=> $this->getnrphone(),
+            ":desemail" => strtolower( $this->getdesemail() ),
+            ":nrphone" => str_replace ($invalidos, "", $this->getnrphone()),
             ":inadmin"=> $this->getinadmin()
         ));
 
-        $this->setData($result[0]);
+        $this->setData($result);
 
     }
 
@@ -159,14 +160,16 @@ class User extends Model {
 
     public function update(){
 
+        $invalidos = array("-", ")", "(", " ", "_");
+
         $sql = new Sql();
         $results = $sql->select("CALL sp_usersupdate_save(:iduser, :desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin);", array(
             ":iduser" => $this->getiduser(),
-            ":desperson" => utf8_encode($this->getdesperson()),
+            ":desperson" => $this->getdesperson(),
             ":deslogin" => $this->getdeslogin(),
             ":despassword" => $this->getdespassword(),
-            ":desemail" => $this->getdesemail(),
-            ":nrphone" => $this->getnrphone(),
+            ":desemail" => strtolower($this->getdesemail()),
+            ":nrphone" => str_replace($invalidos, "", $this->getnrphone()),
             ":inadmin" => $this->getinadmin()
         ));
         $this->setData($results[0]);
@@ -317,6 +320,31 @@ class User extends Model {
 
     }
 
+    public static function setSuccess($msg)
+    {
+
+        $_SESSION[User::SUCCESS] = $msg;
+
+    }
+
+    public static function getSuccess()
+    {
+
+        $msg = isset($_SESSION[User::SUCCESS]) && $_SESSION[User::SUCCESS] ? $_SESSION[User::SUCCESS] : '';
+
+        User::clearSuccess();
+
+        return $msg;
+
+    }
+
+    public static function clearSuccess()
+    {
+
+        $_SESSION[User::SUCCESS] = null;
+
+    }
+
     public static function setErrorRegister($msg){
 
         $_SESSION[User::ERROR_REGISTER] = $msg;
@@ -352,6 +380,14 @@ class User extends Model {
         $results = $sql->select("SELECT * FROM tb_users WHERE deslogin = :deslogin", [
             ':deslogin'=>$login
         ]);
+
+        $results2 = $sql->select("SELECT * FROM tb_persons WHERE desemail = :desemail", [
+            ':desemail'=>$login
+        ]);
+
+        if( count($results) > 0 || count($results2) > 0 ){
+            return true;
+        }
 
         return (count($results) > 0);
 
