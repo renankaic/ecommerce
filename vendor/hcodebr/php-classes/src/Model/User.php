@@ -81,7 +81,7 @@ class User extends Model {
 
             $user = new User();
 
-            $data['desperson'] = utf8_encode($data['desperson']);
+            $data['desperson'] = $data['desperson'];
 
             $user->setdata($data);
 
@@ -167,7 +167,7 @@ class User extends Model {
             ":iduser" => $this->getiduser(),
             ":desperson" => $this->getdesperson(),
             ":deslogin" => $this->getdeslogin(),
-            ":despassword" => $this->getdespassword(),
+            ":despassword" => $this-> User::getPasswordHash ( getdespassword() ),
             ":desemail" => strtolower($this->getdesemail()),
             ":nrphone" => str_replace($invalidos, "", $this->getnrphone()),
             ":inadmin" => $this->getinadmin()
